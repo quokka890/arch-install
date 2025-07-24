@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 ## Variables ##
-DISK=/dev/sda
+DISK=/dev/vda
 part1="${DISK}1"
 part2="${DISK}2"
 
@@ -27,3 +27,12 @@ mkdir -p /mnt/home
 mount -o compress=zstd,subvol=@home "${part2}" /mnt/home
 mkdir -p /mnt/efi
 mount "${part1}" /mnt/efi
+
+## Installation ##
+pacstrap -K /mnt base base-devel linux linux-firmware git btrfs-progs timeshift intel-ucode nvim networkmanager pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber openssh man sudo
+
+## Fstab ##
+genfstab -U /mnt >> /mnt/etc/fstab
+
+## Arch-chroot and general config ##
+arch-chroot /mnt
