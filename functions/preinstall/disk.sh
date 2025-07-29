@@ -36,7 +36,7 @@ get_partition() {
     if [[ $encryption == "true" ]]; then
         local dir
         dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-        source "$dir/../../preinstall/02_format.sh"
+        source "$dir/../../config/global.env"
         export partition2=$CRYPTROOT
     fi
 }

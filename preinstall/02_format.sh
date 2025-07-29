@@ -13,7 +13,7 @@ if [[ "$encryption" == "true" ]]; then
     log "Encrypting $part2"
     cryptsetup luksFormat "$part2"
     cryptsetup open "$part2" cryptroot
-    export CRYPTROOT="/dev/mapper/cryptroot"
+    export CRYPTROOTVAR="/dev/mapper/cryptroot"
     success "Disk successfully encrypted and mapped to $CRYPTROOT"
 else
     exit 0
