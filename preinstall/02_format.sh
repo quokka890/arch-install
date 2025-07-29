@@ -13,7 +13,8 @@ format() {
     mkfs.fat -F32 "${part1}"
 
     confirm_encryption
-
+    echo "${part2}"
+    echo "${encryption}"
     if [[ "$encryption" == "true" ]]; then
         log "Encrypting ${part2}"
         cryptsetup luksFormat "$part2"
