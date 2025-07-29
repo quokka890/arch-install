@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -eo pipefail
 setup_bootloader() {
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
