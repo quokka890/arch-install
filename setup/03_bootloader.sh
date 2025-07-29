@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -eo pipefail
 setup_bootloader() {
-    log "Configuring bootloader"
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
     source "$dir/../utils/logger.sh"
+    log "Configuring bootloader"
     bootctl install
     ROOT_UUID=$(blkid -s UUID -o value "$part2")
     log "Configuring entries"
