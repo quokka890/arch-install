@@ -11,7 +11,7 @@ select_disk() {
 
 prep_disk() {
     umount -A recursive /mnt
-    sgdisk -Z "${DISK}"
+    sgdisk -Z "${selected_disk}"
 }
 
 confirm_encrypt() {
@@ -27,14 +27,14 @@ confirm_encrypt() {
 }
 
 get_partition() {
-    if [[ "$DISK" =~ ^/dev/sd ]]; then
-        export partition1="${DISK}1"
-        export partition="${DISK}2"
-    elif [[ "$DISK" =~ ^/dev/nvme ]]; then
-        export partition1="${DISK}p1"
-        export partition2="${DISK}p2"
+    if [[ "$selected_disk" =~ ^/dev/sd ]]; then
+        export partition1="${selected_disk}1"
+        export partition="${selected_disk}2"
+    elif [[ "$selected_disk" =~ ^/dev/nvme ]]; then
+        export partition1="${selected_disk}p1"
+        export partition2="${selected_disk}p2"
     else
-       error "Unknown disk type: $DISK"
+       error "Unknown disk type: $selected_disk"
     fi
 
     if [[ $encryption == "true" ]]; then
