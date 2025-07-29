@@ -6,6 +6,7 @@ setup_bootloader() {
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
     source "$dir/../utils/logger.sh"
+    bootctl install
     ROOT_UUID=$(blkid -s UUID -o value "$part2")
     log "Configuring entries"
     touch /efi/loader/loader.conf
@@ -35,6 +36,5 @@ EOF
 
     cp /boot/vmlinuz-linux /efi
     cp /boot/initramfs-linux.img /efi
-    bootctl install
     mkinitcpio -P
 }
