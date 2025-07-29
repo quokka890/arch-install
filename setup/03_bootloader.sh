@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 setup_bootloader() {
+    bootctl install
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
     source "$dir/../utils/logger.sh"
     log "Configuring bootloader"
-    bootctl install
     ROOT_UUID=$(blkid -s UUID -o value "$part2")
     log "Configuring entries"
     touch /efi/loader/loader.conf
