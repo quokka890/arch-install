@@ -17,6 +17,7 @@ prep_disk() {
         cryptsetup close cryptroot || true
     fi
     swapoff "$selected_disk" 2>/dev/null || true
+    fuser -kv "$selected_disk" 2>/dev/null || true
     sgdisk -Z "${selected_disk}"
     partprobe "$selected_disk" || true
     wipefs -a "${selected_disk}"
