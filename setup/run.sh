@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-
-setup() {
-    local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/01_locale.sh"
     #source "$dir/02_users.sh"
@@ -11,4 +8,3 @@ setup() {
     #configure_users
     setup_bootloader
     finish
-}
