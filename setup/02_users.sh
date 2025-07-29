@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -eo pipefail
 configure_users() {
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
