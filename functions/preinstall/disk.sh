@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
+dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$dir/../../utils/var_manager.sh"
 
 select_disk() {
     read -rp "Select disk (e.g /dev/sdx)" selected_disk
-    export selected_disk
+    update_env_var DISK $selected_disk
 }
 
 prep_disk() {
@@ -18,27 +20,20 @@ confirm_encryption() {
     encrypt_confirm=${encryption:-Y}
 
     if [[ "$encrypt_confirm" =~ ^[Yy]$ ]]; then
-        export encryption="true"
+        update_env_var encryption true
     else
-        export encryption="false"
+        update_env_var encryption false
     fi
 }
 
 get_partitions() {
     if [[ "$selected_disk" =~ ^/dev/sd ]]; then
-        export partition1="${selected_disk}1"
-        export partition2="${selected_disk}2"
+        update_env_var partition1 "${selected_disk}1"
+        update_env_var partition2 "${selected_disk}2"
     elif [[ "$selected_disk" =~ ^/dev/nvme ]]; then
-        export partition1="${selected_disk}p1"
-        export partition2="${selected_disk}p2"
+        update_env_var partition1 "${selected_disk}p1"
+        update_env_var partition2 "${selected_disk}p2"
     else
        error "Unknown disk type: $selected_disk"
     fi
-}
-
-get_cryptroot() {
-    local dir
-    dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    source "$dir/../../preinstall/02_format.sh"
-    export partition2=$CRYPTROOTVAR
 }
