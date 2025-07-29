@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 select_disk() {
-    read -p "Select disk (e.g /dev/sdx)" selected_disk
+    read -rp "Select disk (e.g /dev/sdx)" selected_disk
     export selected_disk
 }
 
