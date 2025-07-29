@@ -24,7 +24,7 @@ format() {
 
         success "Disk successfully encrypted and mapped to $CRYPTROOT"
     else
-        exit 0
+        log "Proceeding without encryption"
     fi
 
     mkfs.btrfs "${part2}"
