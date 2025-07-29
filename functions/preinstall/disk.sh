@@ -12,7 +12,7 @@ prep_disk() {
 
 confirm_encrypt() {
     local default_response="Y"
-    read -p -r "Do you want to encrypt the disk? Y/n " encryption
+    read -p "Do you want to encrypt the disk? Y/n " encryption
     encrypt_confirm=${encryption:-$default_response}
 
     if [[ "$encrypt_confirm" =~ ^[Yy]$ ]]; then
