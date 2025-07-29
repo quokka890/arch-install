@@ -10,7 +10,7 @@ log "Formatting"
 mkfs.fat -F32 "${part1}"
 
 if [[ "$encryption" == "true" ]]; then
-    log "Encrypting $part2"
+    log "Encrypting ${part2}"
     cryptsetup luksFormat "$part2"
     cryptsetup open "$part2" cryptroot
     export CRYPTROOTVAR="/dev/mapper/cryptroot"
