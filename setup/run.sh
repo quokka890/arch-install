@@ -9,9 +9,11 @@ setup() {
     source "$dir/03_bootloader.sh"
     source "$dir/04_finish.sh"
     install_base
-    chroot
-    configure_users
-    configure_bootloader
-    success "Setup complete!"
-    finish
+    arch-chroot /mnt <<EOF
+setup_locale
+configure_users
+configure_bootloader
+success "Setup complete!"
+finish
+EOF
 }
