@@ -9,7 +9,7 @@ preinstall() {
     source "$dir/03_mount.sh"
     run_checks
     partition
-    ormat
+    format
     mount_filesystem
 }
 
