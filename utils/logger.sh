@@ -12,7 +12,7 @@ timestamp() {
 
 log() {
     local message="$1"
-    local confirm_flag="$2"
+    local confirm_flag="${2:-}"
 
     echo -e "${CYAN}[$(timestamp)] [INFO]${RESET} $message"
 
@@ -21,7 +21,7 @@ log() {
         local response
         local default_response="Y"
         prompt="${RED}Are you sure you want to proceed? Y/n${RESET} "
-
+        
         read -p "$(echo -e "$prompt")" response
         response=${response:-$default_response}
 
