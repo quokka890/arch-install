@@ -14,7 +14,7 @@ format() {
 
     confirm_encryption
 
-    if [[ "$encryption" == true ]]; then
+    if [[ "$encryption" == "true" ]]; then
         log "Encrypting ${part2}"
         cryptsetup luksFormat "$part2"
         cryptsetup open "$part2" cryptroot

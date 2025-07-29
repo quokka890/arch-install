@@ -33,9 +33,9 @@ confirm_encryption() {
     encrypt_confirm=${encryption:-$default_response}
 
     if [[ "$encrypt_confirm" =~ ^[Yy]$ ]]; then
-        update_env_var encryption true
+        update_env_var encryption "true"
     else
-        update_env_var encryption false
+        update_env_var encryption "false"
     fi
 }
 
