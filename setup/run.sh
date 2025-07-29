@@ -5,6 +5,7 @@ setup() {
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/01_locale.sh"
     #source "$dir/02_users.sh"
+    bootctl install
     source "$dir/03_bootloader.sh"
     source "$dir/04_finish.sh"
     setup_locale
