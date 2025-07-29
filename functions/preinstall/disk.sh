@@ -13,7 +13,7 @@ prep_disk() {
     sgdisk -Z "${selected_disk}"
 }
 
-confirm_encrypt() {
+confirm_encryption() {
     read -p "Do you want to encrypt the disk? Y/n" encryption
     encrypt_confirm=${encryption:-Y}
 
@@ -24,7 +24,7 @@ confirm_encrypt() {
     fi
 }
 
-get_partition() {
+get_partitions() {
     if [[ "$selected_disk" =~ ^/dev/sd ]]; then
         export partition1="${selected_disk}1"
         export partition2="${selected_disk}2"
@@ -34,11 +34,11 @@ get_partition() {
     else
        error "Unknown disk type: $selected_disk"
     fi
+}
 
-    if [[ $encryption == "true" ]]; then
-        local dir
-        dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-        source "$dir/../../preinstall/02_format.sh"
-        export partition2=$CRYPTROOTVAR
-    fi
+get_cryptroot() {
+    local dir
+    dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    source "$dir/../../preinstall/02_format.sh"
+    export partition2=$CRYPTROOTVAR
 }

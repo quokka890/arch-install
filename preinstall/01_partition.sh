@@ -6,7 +6,7 @@ dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$dir/../config/global.env"
 source "$dir/../utils/logger.sh"
 source "$dir/../functions/preinstall/disk.sh"
-
+select_disk
 prep_disk
 log "Partitioning disk $DISK" "confirm"
 sgdisk -a 2048 -o "${DISK}"
