@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 partition() {
 local dir
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

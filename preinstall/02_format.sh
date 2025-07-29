@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 format() {
 local dir
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -14,7 +14,7 @@ if [[ "$encryption" == "true" ]]; then
     cryptsetup luksFormat "$part2"
     cryptsetup open "$part2" cryptroot
     export CRYPTROOTVAR="/dev/mapper/cryptroot"
-    success "Disk successfully encrypted and mapped to $CRYPTROOT"
+    success "Disk successfully encrypted and mapped to $CRYPTROOTVAR"
 else
     exit 0
 fi

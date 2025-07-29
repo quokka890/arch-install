@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 setup_bootloader() {
     log "Configuring bootloader"
+    local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
     ROOT_UUID=$(blkid -s UUID -o value "$part2")
