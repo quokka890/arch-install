@@ -14,15 +14,15 @@ format() {
 
     confirm_encryption
 
-    if [[ "$encryption" == "true" ]]; then
+    if [[ "$encryption" == true ]]; then
         log "Encrypting ${part2}"
         cryptsetup luksFormat "$part2"
         cryptsetup open "$part2" cryptroot
 
         CRYPTROOT="/dev/mapper/cryptroot"
-        update_env_var part2 $CRYPTROOT
+        update_env_var part2 "$CRYPTROOT"
 
-        success "Disk successfully encrypted and mapped to $CRYPTROOTVAR"
+        success "Disk successfully encrypted and mapped to $CRYPTROOT"
     else
         exit 0
     fi

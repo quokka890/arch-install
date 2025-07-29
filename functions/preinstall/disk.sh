@@ -28,8 +28,9 @@ confirm_encryption() {
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../../utils/var_manager.sh"
+    default_response=Y
     read -p "Do you want to encrypt the disk? Y/n" encryption
-    encrypt_confirm=${encryption:-Y}
+    encrypt_confirm=${encryption:-$default_response}
 
     if [[ "$encrypt_confirm" =~ ^[Yy]$ ]]; then
         update_env_var encryption true
