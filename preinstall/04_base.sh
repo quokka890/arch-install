@@ -13,5 +13,5 @@ genfstab -U /mnt >> /mnt/etc/fstab
 success "Base system installation complete, entering chroot"
 mkdir -p /mnt/root/installscript
 cp -r "$dir/../" /mnt/root/installscript
-arch-chroot /mnt bash /root/installscript/setup/run.sh
+arch-chroot /mnt /root/installscript/setup/run.sh
 }
