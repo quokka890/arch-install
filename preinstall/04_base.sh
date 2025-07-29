@@ -12,5 +12,5 @@ log "Generating FSTAB"
 genfstab -U /mnt >> /mnt/etc/fstab
 success "Base system installation complete, entering chroot"
 cp -r "$dir" /mnt/root
-arch-chroot /mnt /root/Arch-Linux/setup/run.sh
+arch-chroot /mnt bash root/Arch-Linux/setup/run.sh
 }
