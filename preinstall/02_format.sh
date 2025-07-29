@@ -9,8 +9,8 @@ format() {
     source "$dir/../utils/var_manager.sh"
 
     get_partitions
-    log "Formatting"
-    mkfs.fat -F32 "${part1}"
+    log "Formatting root partition (${part1})"
+    mkfs.fat -F32 "$part1"
 
     confirm_encryption
     echo "${part2}"
@@ -23,12 +23,12 @@ format() {
         CRYPTROOT="/dev/mapper/cryptroot"
         update_env_var part2 "$CRYPTROOT"
 
-        success "Disk successfully encrypted and mapped to $CRYPTROOT"
+        success "Disk successfully encrypted and mapped to ${part2}"
     else
         log "Proceeding without encryption"
     fi
 
-    mkfs.btrfs "${part2}"
+    mkfs.btrfs "$part2"
     btrfs subvolume create /mnt/@
     btrfs subvolume create /mnt/@home
     success "Formatting successful"
