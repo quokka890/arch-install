@@ -3,11 +3,11 @@ set -eo pipefail
 format() {
 local dir
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$dir/../functions/preinstall/disk.sh"
+get_partitions
 source "$dir/../config/global.env"
 source "$dir/../utils/logger.sh"
-source "$dir/../functions/preinstall/disk.sh"
 log "Formatting"
-get_partitions
 mkfs.fat -F32 "${part1}"
 confirm_encryption
 if [[ "$encryption" == "true" ]]; then
