@@ -5,6 +5,7 @@ local dir
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$dir/../utils/logger.sh"
 source "$dir/../functions/preinstall/disk.sh"
+source "$dir/../config/global.env"
 select_disk
 prep_disk
 source "$dir/../config/global.env"
