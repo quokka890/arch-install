@@ -13,9 +13,10 @@ prep_disk() {
         umount -A --recursive /mnt
     fi
 
-    if lsblk "$selected_disk" | grep -q crypt; then
-        cryptsetup close cryptroot || true
+    if [[ -e /dev/mapper/cryptroot ]]; then
+        cryptsetup close cryptroot 
     fi
+    
     swapoff "$selected_disk" 2>/dev/null || true
     fuser -kv "$selected_disk" 2>/dev/null || true
     sgdisk -Z "${selected_disk}"
