@@ -36,6 +36,6 @@ get_partition() {
         local dir
         dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
         source "$dir/../../preinstall/02_format.sh"
-        export partition2=$CRYPTROOT
+        export partition2=$CRYPTROOTVAR
     fi
 }
