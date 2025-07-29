@@ -43,11 +43,11 @@ get_partitions() {
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../../utils/var_manager.sh"
     if [[ "$selected_disk" =~ ^/dev/sd ]]; then
-        update_env_var part1 "${selected_disk}1"
-        update_env_var part2 "${selected_disk}2"
+        update_env_var partition1 "${selected_disk}1"
+        update_env_var partition2 "${selected_disk}2"
     elif [[ "$selected_disk" =~ ^/dev/nvme ]]; then
-        update_env_var part1 "${selected_disk}p1"
-        update_env_var part2 "${selected_disk}p2"
+        update_env_var partition1 "${selected_disk}p1"
+        update_env_var partition2 "${selected_disk}p2"
     else
        error "Unknown disk type: $selected_disk"
     fi
