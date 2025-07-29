@@ -9,7 +9,7 @@ select_disk() {
 }
 
 prep_disk() {
-    if mountpoint -q /mnt; then
+    if findmnt -rno TARGET /mnt &>/dev/null; then
         umount -A --recursive /mnt
     fi
     sgdisk -Z "${selected_disk}"
