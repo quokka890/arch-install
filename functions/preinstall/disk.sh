@@ -6,7 +6,7 @@ select_disk() {
 }
 
 prep_disk() {
-    umount -A recursive /mnt
+    umount -A --recursive /mnt
     sgdisk -Z "${selected_disk}"
 }
 
