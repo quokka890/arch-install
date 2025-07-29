@@ -5,6 +5,6 @@ source "$dir/../setup/run.sh"
 log "Running setup" "confirm"
 mkdir -p /mnt/root/installscript
 cp -r "$dir" /mnt/root/installscript
-chmod +x /mnt/root/installscript/setup/03_bootloader.sh
-sudo arch-chroot /mnt /root/installscript/setup/03_bootloader.sh
+chmod +x /mnt/root/installscript/setup/run.sh
+sudo arch-chroot /mnt /root/installscript/setup/run.sh
 setup
