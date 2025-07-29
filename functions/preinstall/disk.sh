@@ -1,8 +1,4 @@
 #!/usr/bin/env bash
-dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "$dir/../../config/global.env"
-source "$dir/../../utils/logger.sh"
-source "$dir/../../preinstall/02_format.sh"
 
 select_disk() {
     read -p "Select disk (e.g /dev/sdx)" selected_disk
@@ -38,6 +34,9 @@ get_partition() {
     fi
 
     if [[ $encryption == "true" ]]; then
+        local dir
+        dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+        source "$dir/../../preinstall/02_format.sh"
         export partition2=$CRYPTROOT
     fi
 }
