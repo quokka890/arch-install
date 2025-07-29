@@ -24,7 +24,7 @@ confirm_encrypt() {
 get_partition() {
     if [[ "$selected_disk" =~ ^/dev/sd ]]; then
         export partition1="${selected_disk}1"
-        export partition="${selected_disk}2"
+        export partition2="${selected_disk}2"
     elif [[ "$selected_disk" =~ ^/dev/nvme ]]; then
         export partition1="${selected_disk}p1"
         export partition2="${selected_disk}p2"
