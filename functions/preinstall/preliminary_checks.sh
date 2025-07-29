@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
+run_checks() {
+local dir
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$dir/../../utils/logger.sh"
-run_checks() {
 log "Verifying UEFI"
 EFI_ARCH_FILE="/sys/firmware/efi/fw_platform_size"
 

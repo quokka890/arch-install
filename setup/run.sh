@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 setup() {
+    local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/00_base.sh"
     source "$dir/01_chroot.sh"

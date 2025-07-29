@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 partition() {
+local dir
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$dir/../config/global.env"
 source "$dir/../utils/logger.sh"
