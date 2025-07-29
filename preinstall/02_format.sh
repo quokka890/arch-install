@@ -26,7 +26,7 @@ format() {
         log "Proceeding without encryption"
     fi
     mkfs.btrfs "$part2"
-    mount "$part2"
+    mount "$part2" /mnt
     btrfs subvolume create /mnt/@
     btrfs subvolume create /mnt/@home
     umount /mnt
