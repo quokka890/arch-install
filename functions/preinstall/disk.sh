@@ -12,7 +12,13 @@ prep_disk() {
     if findmnt -rno TARGET /mnt &>/dev/null; then
         umount -A --recursive /mnt
     fi
+
+    if lsblk "$selected_disk" | grep -q crypt; then
+        cryptsetup close cryptroot || true
+    fi
+    swapoff "$selected_disk" 2>/dev/null || true
     sgdisk -Z "${selected_disk}"
+    partprobe "$selected_disk" || true
     wipefs -a "${selected_disk}"
 }
 
