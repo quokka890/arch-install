@@ -10,7 +10,7 @@ select_disk
 prep_disk
 log "Partitioning disk ${DISK}" "confirm"
 sgdisk -a 2048 -o "${DISK}"
-sgdisk --new=1:2048:+2G "${DISK}"
+sgdisk --new=1:0:+2G "${DISK}"
 sgdisk --typecode=1:ef00 "${DISK}"
 sgdisk --new=2:0:0 "${DISK}"
 partprobe "${DISK}"
