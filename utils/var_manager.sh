@@ -12,4 +12,7 @@ update_env_var() {
     else
         echo "${key}=${value}" >> "$env_file"
     fi
+    set -a
+    source "$dir/../config/global.env"
+    set +a
 }
