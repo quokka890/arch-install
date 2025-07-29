@@ -13,8 +13,6 @@ format() {
     mkfs.fat -F32 "$part1"
 
     confirm_encryption
-    echo "${part2}"
-    echo "${encryption}"
     if [[ "$encryption" == "true" ]]; then
         log "Encrypting ${part2}"
         cryptsetup luksFormat "$part2"
@@ -27,9 +25,10 @@ format() {
     else
         log "Proceeding without encryption"
     fi
-
     mkfs.btrfs "$part2"
+    mount "$part2"
     btrfs subvolume create /mnt/@
     btrfs subvolume create /mnt/@home
+    umount /mnt
     success "Formatting successful"
 }
