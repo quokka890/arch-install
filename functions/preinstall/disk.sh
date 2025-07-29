@@ -11,8 +11,8 @@ prep_disk() {
 }
 
 confirm_encrypt() {
-    read -p "Do you want to encrypt the disk? Y/n " encryption
-    encrypt_confirm=${encryption}
+    read -p "Do you want to encrypt the disk? Y/n" encryption
+    encrypt_confirm=${encryption:-Y}
 
     if [[ "$encrypt_confirm" =~ ^[Yy]$ ]]; then
         export encryption="true"
