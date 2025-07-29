@@ -5,7 +5,7 @@ setup_bootloader() {
     source "$dir/../config/global.env"
     source "$dir/../utils/logger.sh"
     log "Configuring bootloader"
-    bootctl install --esp-path=/efi
+    bootctl install 
     ROOT_UUID=$(blkid -s UUID -o value "$part2")
     log "Configuring entries"
     touch /efi/loader/loader.conf
