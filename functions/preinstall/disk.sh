@@ -12,8 +12,8 @@ prep_disk() {
     if mountpoint -q /mnt; then
         umount -A --recursive /mnt
     fi
-    wipefs -a "${selected_disk}"
     sgdisk -Z "${selected_disk}"
+    wipefs -a "${selected_disk}"
 }
 
 confirm_encryption() {
