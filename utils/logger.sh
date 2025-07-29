@@ -22,7 +22,7 @@ log() {
         local default_response="Y"
         prompt="${RED}Are you sure you want to proceed? Y/n${RESET} "
 
-        read -p -r "$(echo -e "$prompt")" response
+        read -p "$(echo -e "$prompt")" response
         response=${response:-$default_response}
 
         if ! [[ $response =~ ^[Yy]$ ]]; then
