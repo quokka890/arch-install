@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-setup_users() {
+configure_users() {
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
     log "Setting up host and users"
