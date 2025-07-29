@@ -4,10 +4,8 @@ setup_locale() {
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
-    log "Entering chroot"
-    arch-chroot /mnt
+    source "$dir/../utils/logger.sh"
     log "Setting up timezone and locale"
-
     ln -sf "/usr/share/zoneinfo/$TIMEZONE" /etc/localtime
     hwclock --systohc
     sed -i "s/^# *$LOCALE/$LOCALE/" /etc/locale.gen

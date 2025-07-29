@@ -4,6 +4,7 @@ configure_users() {
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
+    source "$dir/../utils/logger.sh"
     log "Setting up host and users"
     
     touch /etc/hostname

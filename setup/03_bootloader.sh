@@ -5,6 +5,7 @@ setup_bootloader() {
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
+    source "$dir/../utils/logger.sh"
     ROOT_UUID=$(blkid -s UUID -o value "$part2")
     log "Configuring entries"
     touch /efi/loader/loader.conf
