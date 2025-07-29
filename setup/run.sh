@@ -8,7 +8,7 @@ setup() {
     source "$dir/03_bootloader.sh"
     source "$dir/04_finish.sh"
     setup_locale
-    configure_users
+    #configure_users
     setup_bootloader
     finish
 }
