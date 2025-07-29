@@ -11,5 +11,8 @@ setup() {
     source "$dir/02_users.sh"
     source "$dir/03_bootloader.sh"
     source "$dir/04_finish.sh"
-    install_base
+    setup_locale
+    configure_users
+    setup_bootloader
+    finish
 }
