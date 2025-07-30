@@ -3,6 +3,4 @@ set -eo pipefail
 finish() {
     systemctl enable NetworkManager
     exit
-    umount -R /mnt
-    reboot
 }
