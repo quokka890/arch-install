@@ -10,5 +10,5 @@ preinstall
 log "Running setup" "confirm"
 mkdir -p /mnt/root/installscript
 cp -r "$dir/../" /mnt/root/installscript
-chmod +x /mnt/root/installscript/setup/run.sh
-sudo arch-chroot /mnt /root/installscript/setup/run.sh
+chmod +x /mnt/root/installscript/setup/*.sh
+arch-chroot /mnt /root/installscript/setup/setup_croot.sh
