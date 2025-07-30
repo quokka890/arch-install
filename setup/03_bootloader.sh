@@ -37,7 +37,7 @@ options cryptdevice=UUID=$ROOT_UUID:cryptroot root=/dev/mapper/cryptroot rootfla
 EOF
 
     log "Updating mkinitcpio HOOKS"
-    sed -i 's/^HOOKS=.*/HOOKS=(base udev autodetect microcode modconf kms keyboard vconsole block sencrypt filesystems fsck)/' "/etc/mkinitcpio.conf"
+    sed -i 's/^HOOKS=.*/HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt filesystems fsck)/' "/etc/mkinitcpio.conf"
 
     log "Creating mkinitcpio preset"
     cat > /etc/mkinitcpio.d/linux.preset <<EOF
