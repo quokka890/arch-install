@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-setup_bootloader() {
+configure_bootloader() {
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
