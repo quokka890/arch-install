@@ -4,4 +4,4 @@ rm -rf /mnt/root/installscript
 mkdir -p /mnt/root/installscript
 cp -r "$dir" /mnt/root/installscript
 chmod +x /mnt/root/installscript/setup/run.sh
-arch-chroot /mnt /root/installscript/setup/run.sh
+arch-chroot /mnt /mnt/root/installscript/setup/run.sh
