@@ -11,7 +11,7 @@ pacstrap -K /mnt base base-devel linux linux-firmware git btrfs-progs timeshift 
 log "Generating FSTAB"
 genfstab -U /mnt >> /mnt/etc/fstab
 success "Base system installation complete, entering chroot"
-cp -r "$dir/../setup/" /mnt/root/setup
-chmod +x /mnt/root/setup/*.sh
-arch-chroot /mnt /root/setup/setup_chroot.sh
+cp -r "$dir/../" /mnt/root/install
+chmod +x /mnt/root/install/setup/*.sh
+arch-chroot /mnt /root/install/setup/setup_chroot.sh
 }
