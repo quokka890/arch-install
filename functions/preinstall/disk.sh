@@ -46,9 +46,11 @@ get_partitions() {
     if [[ "$selected_disk" =~ ^/dev/sd ]]; then
         update_env_var part1 "${selected_disk}1"
         update_env_var part2 "${selected_disk}2"
+        update_env_var persistent_part2 "${selected_disk}2"
     elif [[ "$selected_disk" =~ ^/dev/nvme ]]; then
         update_env_var part1 "${selected_disk}p1"
         update_env_var part2 "${selected_disk}p2"
+        update_env_var persistent_part2 "${selected_disk}p2"
     else
        error "Unknown disk type: $selected_disk"
     fi

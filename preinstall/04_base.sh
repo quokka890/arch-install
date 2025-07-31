@@ -10,5 +10,5 @@ log "Installing main packages"
 pacstrap -K /mnt base base-devel linux linux-firmware git btrfs-progs timeshift intel-ucode nvim networkmanager pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber openssh man sudo
 log "Generating FSTAB"
 genfstab -U /mnt >> /mnt/etc/fstab
-success "Base system installation complete, entering chroot"
+success "Base system installation complete"
 }

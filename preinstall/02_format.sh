@@ -22,6 +22,7 @@ format() {
         update_env_var part2 "$CRYPTROOT"
 
         success "Disk successfully encrypted and mapped to ${part2}"
+        warn "part2 variable updated to $CRYPTROOT"
     else
         log "Proceeding without encryption"
     fi

@@ -16,6 +16,7 @@ preinstall() {
     log "Running setup" "confirm"
 mkdir -p /mnt/root/installscript
 cp -r "$dir/../" /mnt/root/installscript
+log "Entering chroot"
 chmod +x /mnt/root/installscript/setup/*.sh
 arch-chroot /mnt /root/installscript/setup/run.sh
 }

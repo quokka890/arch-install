@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-set -eo pipefail
+set -euo pipefail
 finish() {
     systemctl enable NetworkManager
+    log "Setup successful"
     exit
 }

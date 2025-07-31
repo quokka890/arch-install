@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
+set -euo pipefail
 configure_bootloader() {
-    set -euo pipefail
-
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
@@ -15,7 +14,7 @@ configure_bootloader() {
         exit 1
     fi
 
-    ROOT_UUID=$(blkid -s UUID -o value "$part2")
+    ROOT_UUID=$(blkid -s UUID -o value "$persistent_part2")
     if [[ -z "$ROOT_UUID" ]]; then
         error "Failed to get UUID for $part2"
         exit 1
