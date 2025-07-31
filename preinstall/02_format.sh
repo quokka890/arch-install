@@ -16,7 +16,8 @@ format() {
     if [[ "$encryption" == "true" ]]; then
         log "Encrypting ${part2}"
         cryptsetup luksFormat "$part2"
-        success "Encrypted root partition successfuly. Opening"
+        success "Encryption successful"
+        log "Opening encrypted partition"
         cryptsetup open "$part2" cryptroot
 
         CRYPTROOT="/dev/mapper/cryptroot"
