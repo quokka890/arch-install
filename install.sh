@@ -18,6 +18,7 @@ for script in "$scriptdir"/*.sh; do
     function_name="configure_${base_name#*_}" # Strip numeric prefix like 01_, then prepend "configure_"
 
     # shellcheck disable=SC1090
+    chmod +x "$script"
     source "$script"
     if declare -F "$function_name" > /dev/null; then
         "$function_name"
