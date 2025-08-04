@@ -13,16 +13,17 @@ status "Entering chroot"
 scriptdir="/mnt/root/installscript/Arch-Linux/setup"
 for script in "$scriptdir"/*; do
     script_name="$(basename "$script")"
-    base_name="${script_name%%.sh}"          # Remove .sh extension
-    function_name="configure_${base_name#*_}" # Strip numeric prefix like 01_, then prepend "configure_"
-    echo "$script"
+    base_name="${script_name%%.sh}"          
+    function="configure_${base_name#*_}" # strip prefix like 01_, then prepend "configure_"
     # shellcheck disable=SC1090
     chmod +x "$script"
-    source "$script"
-    if declare -F "$function_name" > /dev/null; then
-        "$function_name"
-    else
-        error "Function $function_name not found in $script"
-        exit 1
-    fi
+    arch-chroot /mnt /bin/bash -c "
+        source $script
+        if declare -F $function > /dev/null; then
+            $function
+        else
+            echo 'Function $function not found in $script_name' >&2
+            exit 1
+        fi
+    " 
 done
