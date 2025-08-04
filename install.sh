@@ -14,16 +14,17 @@ scriptdir="/mnt/root/installscript/Arch-Linux/setup"
 for script in "$scriptdir"/*; do
     script_name="$(basename "$script")"
     base_name="${script_name%%.sh}"          
+    live_script="/root/installscript/Arch-Linux/setup"
     function="configure_${base_name#*_}" # strip prefix like 01_, then prepend "configure_"
     # shellcheck disable=SC1090
     chmod +x "$script"
     arch-chroot /mnt /bin/bash -c "
-        source $script
+        source $live_script
         if declare -F $function > /dev/null; then
             $function
         else
             echo 'Function $function not found in $script_name' >&2
             exit 1
         fi
-    " || exit 1
+    " 
 done
