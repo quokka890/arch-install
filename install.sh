@@ -11,6 +11,12 @@ mkdir -p /mnt/root/installscript
 cp -r "$dir/" /mnt/root/installscript
 status "Entering chroot"
 scriptdir="/mnt/root/installscript/setup"
+for file in "$scriptdir"/*; do
+    if [[ -f "$file" ]]; then
+        echo "Processing file: $file"
+        # Add your file processing logic here
+    fi
+done
 for script in "$scriptdir"/*; do
     script_name="$(basename "$script")"
     base_name="${script_name%%.sh}"          # Remove .sh extension
