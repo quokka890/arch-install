@@ -42,8 +42,6 @@ PRESETS=('default')
 default_image=/efi/initramfs-linux.img
 default_kver=/efi/vmlinuz-linux
 EOF
-
-    log "Copying kernel and initramfs to /efi"
     cp /boot/vmlinuz-linux /efi/vmlinuz-linux
     cp /boot/initramfs-linux.img /efi/initramfs-linux.img
     mkinitcpio -P
