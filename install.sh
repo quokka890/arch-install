@@ -8,7 +8,7 @@ source "$dir/preinstall/run.sh"
 
 status "Running setup" "confirm"
 mkdir -p /mnt/root/installscript
-cp -r "$dir/../" /mnt/root/installscript
+cp -r "$dir/" /mnt/root/installscript
 status "Entering chroot"
 scriptdir="/mnt/root/installscript/setup"
 for script in $scriptdir; do
