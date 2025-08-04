@@ -10,7 +10,7 @@ status "Running setup" "confirm"
 mkdir -p /mnt/root/installscript
 cp -r "$dir/" /mnt/root/installscript
 status "Entering chroot"
-scriptdir="/mnt/root/installscript/Arch-Linux/setup"
+scriptdir="/mnt/root/installscript/Arch-Install/setup"
 for script in "$scriptdir"/*; do
     script_name="$(basename "$script")"
     base_name="${script_name%%.sh}"          
