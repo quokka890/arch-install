@@ -6,7 +6,7 @@ configure_bootloader() {
     source "$dir/../config/global.env"
     source "$dir/../utils/logger.sh"
 
-    log "Installing systemd-boot to /efi"
+    status "Installing systemd-boot to /efi"
     bootctl --esp-path=/efi install
 
     if [[ -z "${part2:-}" ]]; then
@@ -20,7 +20,7 @@ configure_bootloader() {
         exit 1
     fi
 
-    log "Writing loader configuration"
+    status "Writing loader configuration"
     cat > /efi/loader/loader.conf <<EOF
 default  arch.conf
 timeout  4
@@ -35,10 +35,8 @@ initrd  /initramfs-linux.img
 options cryptdevice=UUID=$ROOT_UUID:cryptroot root=/dev/mapper/cryptroot rootflags=subvol=@ rw
 EOF
 
-    log "Updating mkinitcpio HOOKS"
+    status "Configuring mkinitcpio"
     sed -i 's/^HOOKS=.*/HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont block encrypt filesystems fsck)/' "/etc/mkinitcpio.conf"
-
-    log "Creating mkinitcpio preset"
     cat > /etc/mkinitcpio.d/linux.preset <<EOF
 PRESETS=('default')
 default_image=/efi/initramfs-linux.img
@@ -48,8 +46,6 @@ EOF
     log "Copying kernel and initramfs to /efi"
     cp /boot/vmlinuz-linux /efi/vmlinuz-linux
     cp /boot/initramfs-linux.img /efi/initramfs-linux.img
-
-    log "Generating initramfs"
     mkinitcpio -P
 
     success "Bootloader configured successfully"
