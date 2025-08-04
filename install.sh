@@ -3,13 +3,13 @@ dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$dir/utils/logger.sh"
 source "$dir/preinstall/run.sh"
 
-log "Running preinstall" "confirm"
+status "Running preinstall" "confirm"
 preinstall
 
 status "Running setup" "confirm"
 mkdir -p /mnt/root/installscript
 cp -r "$dir/../" /mnt/root/installscript
-log "Entering chroot"
+status "Entering chroot"
 chmod +x /mnt/root/installscript/setup/*.sh
 scriptdir="/mnt/root/installscript/setup"
 for script in "$scriptdir"/*.sh; do
