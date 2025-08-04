@@ -10,12 +10,12 @@ status "Running setup" "confirm"
 mkdir -p /mnt/root/installscript
 cp -r "$dir/" /mnt/root/installscript
 status "Entering chroot"
-scriptdir="/mnt/root/installscript/setup/"
-for script in "$scriptdir"/*.sh; do
+scriptdir="/mnt/root/installscript/setup"
+for script in "$scriptdir"/*; do
     script_name="$(basename "$script")"
     base_name="${script_name%%.sh}"          # Remove .sh extension
     function_name="configure_${base_name#*_}" # Strip numeric prefix like 01_, then prepend "configure_"
-
+    echo "$script"
     # shellcheck disable=SC1090
     chmod +x "$script"
     source "$script"
