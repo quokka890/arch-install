@@ -3,8 +3,8 @@ dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "$dir/utils/logger.sh"
 source "$dir/preinstall/run.sh"
 
-status "Running preinstall" "confirm"
-preinstall
+#status "Running preinstall" "confirm"
+#preinstall
 
 status "Running setup" "confirm"
 mkdir -p /mnt/root/installscript
