@@ -25,5 +25,5 @@ for script in "$scriptdir"/*; do
             echo 'Function $function not found in $script_name' >&2
             exit 1
         fi
-    " 
+    " || exit 1
 done
