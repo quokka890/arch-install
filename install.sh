@@ -14,7 +14,7 @@ scriptdir="/mnt/root/installscript/Arch-Linux/setup"
 for script in "$scriptdir"/*; do
     script_name="$(basename "$script")"
     base_name="${script_name%%.sh}"          
-    live_script="/root/installscript/Arch-Linux/setup"
+    live_script="${script#/mnt}"
     function="configure_${base_name#*_}" # strip prefix like 01_, then prepend "configure_"
     # shellcheck disable=SC1090
     chmod +x "$script"
