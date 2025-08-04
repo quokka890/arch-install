@@ -3,10 +3,9 @@
 select_disk() {
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    caller="$(cd "$(dirname "${BASH_SOURCE[1]}")" && pwd)"
     source "$dir/../utils/var_manager.sh"
     read -rp "Select disk (e.g /dev/sdx)" selected_disk
-    update_env_var DISK "$selected_disk" "$caller"
+    update_env_var DISK "$selected_disk"
 }
 
 prep_disk() {
