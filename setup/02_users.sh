@@ -5,7 +5,7 @@ configure_users() {
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     source "$dir/../config/global.env"
     source "$dir/../utils/logger.sh"
-    log "Setting up host and users"
+    status "Setting up host and users"
     
     touch /etc/hostname
     echo "$HOSTNAME" >> /etc/hostname
@@ -17,7 +17,7 @@ configure_users() {
 127.0.1.1 "$HOSTNAME"
 EOF
     passwd
-    useradd -mG wheel "$USERNAME"
-    passwd "$USERNAME"
+    #useradd -mG wheel "$USERNAME"
+    #passwd "$USERNAME"
     sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 }
