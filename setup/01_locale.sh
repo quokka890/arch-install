@@ -14,5 +14,4 @@ EOF
     echo "KEYMAP=$KEYMAP" > /etc/vconsole.conf
     success "Locale, timezone, keymap and layout configured"
     LOCALE=true
-    bash "$dir"/run.sh
 }
