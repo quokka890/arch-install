@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 configure_users() {
     local dir
     dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -16,7 +17,7 @@ configure_users() {
 127.0.1.1 "$HOSTNAME"
 EOF
     passwd
-    useradd -mG wheel "$user"
-    passwd "$user"
+    useradd -mG wheel "$USERNAME"
+    passwd "$USERNAME"
     sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 }

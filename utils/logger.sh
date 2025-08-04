@@ -4,17 +4,16 @@ RED="\e[1;31m"
 GREEN="\e[1;32m"
 YELLOW="\e[1;33m"
 BLUE="\e[1;34m"
-CYAN="\e[1;36m"
 
 timestamp() {
     date +"%Y-%m-%d %H:%M:%S"
 }
 
-log() {
-    local message="$1"
+status() {
+    local status="$1"
     local confirm_flag="${2:-}"
 
-    echo -e "${CYAN}[$(timestamp)] [INFO]${RESET} $message"
+    echo -e "${BLUE}[$(timestamp)] [INFO]${RESET} $status"
 
     if [[ "$confirm_flag" == "confirm" ]]; then
         local prompt

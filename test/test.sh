@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-mkdir -p /mnt/root/installscript
-cp -r "$dir/../" /mnt/root/installscript
-chmod +x /mnt/root/installscript/setup/*.sh
-arch-chroot /mnt /root/installscript/setup/run.sh
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+echo "$root"
+source "$root/utils/logger.sh"

@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1091
+# shellcheck disable=SC2154
 set -euo pipefail
 configure_bootloader() {
     local dir

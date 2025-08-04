@@ -6,9 +6,8 @@ install_base() {
     source "$dir/../config/global.env"
     source "$dir/../utils/logger.sh"
 
-log "Installing main packages"
-pacstrap -K /mnt base base-devel linux linux-firmware git btrfs-progs timeshift intel-ucode nvim networkmanager pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber openssh man sudo
-log "Generating FSTAB"
-genfstab -U /mnt >> /mnt/etc/fstab
-success "Base system installation complete"
+    status "Installing base system"
+    pacstrap -K /mnt base base-devel linux linux-firmware git btrfs-progs timeshift intel-ucode nvim networkmanager pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber openssh man sudo
+    genfstab -U /mnt >> /mnt/etc/fstab
+    success "Base system installation complete"
 }
