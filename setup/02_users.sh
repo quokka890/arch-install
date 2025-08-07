@@ -17,7 +17,7 @@ configure_users() {
 127.0.1.1 "$HOSTNAME"
 EOF
     passwd
-    #useradd -mG wheel "$USERNAME"
-    #passwd "$USERNAME"
+    useradd -mG wheel "$USERNAME"
+    passwd "$USERNAME"
     sed -i 's/^# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers
 }
