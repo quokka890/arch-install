@@ -7,8 +7,7 @@ status "Running preinstall" "confirm"
 preinstall
 
 status "Running setup" "confirm"
-mkdir -p /mnt/root/arch-install
-cp -r "$dir/" /mnt/root/arch-install
+cp -r "$dir/" /mnt/root
 status "Entering chroot"
 scriptdir="/mnt/root/arch-install/setup"
 for script in "$scriptdir"/*.sh; do
