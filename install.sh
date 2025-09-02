@@ -11,7 +11,7 @@ mkdir -p /mnt/root/arch-install
 cp -r "$dir/" /mnt/root/arch-install
 status "Entering chroot"
 scriptdir="/mnt/root/arch-install/setup"
-for script in "$scriptdir"/*; do
+for script in "$scriptdir"/*.sh; do
     script_name="$(basename "$script")"
     base_name="${script_name%%.sh}"          
     live_script="${script#/mnt}"
