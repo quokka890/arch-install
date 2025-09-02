@@ -7,10 +7,10 @@ status "Running preinstall" "confirm"
 preinstall
 
 status "Running setup" "confirm"
-mkdir -p /mnt/root/installscript
-cp -r "$dir/" /mnt/root/installscript
+mkdir -p /mnt/root/arch-install
+cp -r "$dir/" /mnt/root/arch-install
 status "Entering chroot"
-scriptdir="/mnt/root/installscript/archinstall/setup"
+scriptdir="/mnt/root/arch-install/setup"
 for script in "$scriptdir"/*; do
     script_name="$(basename "$script")"
     base_name="${script_name%%.sh}"          
